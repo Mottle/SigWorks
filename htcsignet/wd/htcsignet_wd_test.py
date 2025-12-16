@@ -2,8 +2,8 @@ import sys
 
 sys.path.append("/home/debian/Workspace/HTCSigNet-master/")
 import torch
-from htcsignet.featurelearning.data import extract_features
-import htcsignet.featurelearning.models as models
+from htcsignet.feature_learning.data import extract_features
+import htcsignet.feature_learning.models as models
 import argparse
 from htcsignet.datasets.util import load_dataset, get_subset
 import htcsignet.wd.training as training

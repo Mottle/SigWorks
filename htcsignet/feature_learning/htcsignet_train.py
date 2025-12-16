@@ -1,6 +1,6 @@
 import sys
 
-sys.path.append("/home/debian/Workspace/HTCSigNet/")
+sys.path.append(".")
 import argparse
 import pathlib
 from collections import OrderedDict
@@ -16,9 +16,9 @@ from torch.utils.data import TensorDataset, random_split, DataLoader
 from torchvision import transforms
 
 import htcsignet.datasets.util as util
-from htcsignet.featurelearning.data import TransformDataset
-import htcsignet.featurelearning.models as models
-import os
+from htcsignet.feature_learning.data import TransformDataset
+import htcsignet.feature_learning.models as models
+# import os
 
 
 def train(base_model: torch.nn.Module,
