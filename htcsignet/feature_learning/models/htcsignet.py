@@ -118,7 +118,7 @@ class SigTransformer(nn.Module):
             self.vit_transformer.patch_embed.proj = nn.Conv2d(1, 768, kernel_size=16, stride=16)
 
     def forward(self, inputs):
-        #conv
+        # conv
         residual = inputs
         x = self.conv1(inputs)
         x_spd1 = self.spd_conv1(x)
@@ -128,8 +128,10 @@ class SigTransformer(nn.Module):
         x = self.conv4(x)
         x = x + residual
         
-        #vit
+        # vit
         x_vit = self.vit_transformer(x)
+
+        # spd
         x_spd = x_spd1 + x_spd3
         x_spd = self.conv_layers(x_spd)
         x_spd = x_spd.view(x_spd.shape[0], 256 * 5 * 5)
