@@ -8,6 +8,7 @@ from collections import OrderedDict
 import numpy as np
 from typing import Dict, Tuple, Any, Optional
 from sklearn.preprocessing import LabelEncoder
+
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -185,7 +186,7 @@ def test(val_loader: torch.utils.data.DataLoader,
 
 def main(args):
  
-    logdir = pathlib.Path(args.logdir)
+    logdir = pathlib.Path(args.model_checkpoint)
     if not logdir.exists():
         logdir.mkdir()
 
@@ -275,7 +276,7 @@ if __name__ == '__main__':
 
     argparser.add_argument('--weights', default='./vit_base_patch16_224.pth') #'../../vit_base_patch16_224.pth'
     argparser.add_argument('--freeze_layers', default='True')
-    argparser.add_argument('--logdir', help='logdir', default='./logs/')
+    argparser.add_argument('--model_checkpoint', help='model checkpoint', default='./model_checkpoint/')
     argparser.add_argument('--lr', help='learning rate', default=1e-5, type=float)
     argparser.add_argument('--forg', type=bool, help='Train with forgeries detection task', default=True)
     arguments = argparser.parse_args()
